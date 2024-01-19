@@ -11,8 +11,8 @@ const productSchema = t.Object({
   price: t.Number({ minimum: 0 }),
 })
 
-export const updateMenu = new Elysia().use(authentication).put(
-  '/menu',
+export const updateProducts = new Elysia().use(authentication).put(
+  '/products',
   async ({ getManagedstoreId, set, body }) => {
     const storeId = await getManagedstoreId()
 

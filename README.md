@@ -1,4 +1,4 @@
-# 🧙‍♀️ DashboardWizard-API
+# 🍕 pizza.shop API
 
 Food delivery app (aka. iFood/Uber Eats) back-end built with TypeScript, Drizzle a ElysiaJS.
 
@@ -26,7 +26,7 @@ bun dev
 - it should be able to sign in as a store manager
 - it should be able to register as a new customer
 - it should be able to crete an order to the store
-- it should be able to manage the store menu
+- it should be able to manage the store products
 - it should be able to manage the store evaluations
 - it should be able to leave an evaluation
 - it should be able to manage the store orders

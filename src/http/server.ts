@@ -11,7 +11,7 @@ import { cancelOrder } from './routes/cancel-order'
 import { getOrders } from './routes/get-orders'
 import { createEvaluation } from './routes/create-evaluation'
 import { getEvaluations } from './routes/get-evaluations'
-import { updateMenu } from './routes/update-menu'
+import { updateProducts } from './routes/update-products'
 import { updateProfile } from './routes/update-profile'
 import { authentication } from './authentication'
 import { getProfile } from './routes/get-profile'
@@ -63,7 +63,7 @@ const app = new Elysia()
   .use(getOrderDetails)
   .use(createEvaluation)
   .use(getEvaluations)
-  .use(updateMenu)
+  .use(updateProducts)
   .use(updateProfile)
   .use(getMonthReceipt)
   .use(getMonthOrdersAmount)
