@@ -4,14 +4,16 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "generate": "drizzle-kit generate:pg",
     "----BUILD": "",
     "build:vercel": "bun scripts/transform-paths.ts",
     "----RUN": "",
     "dev": "bun --watch src/http/server.ts",
     "start": "bun run build:vercel && bun src/http/server.ts",
+    "----DATABASE": "",
+    "generate": "drizzle-kit generate:pg",
     "migrate": "bun src/db/migrate.ts",
-    "seed": "bun src/db/seed.ts"
+    "seed": "bun src/db/seed.ts",
+    "db:view": "drizzle-kit studio"
   },
   "author": "Luis Felipe <luis.felipe.lbs@gmail.com>",
   "license": "MIT",
