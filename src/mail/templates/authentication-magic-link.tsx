@@ -22,7 +22,7 @@ export function AuthenticationMagicLinkTemplate({
   userEmail,
   authLink,
 }: AuthenticationMagicLinkTemplateProps) {
-  const previewText = `Faça login na Pizza Shop`
+  const previewText = `Faça login no Dashboard Wizard`
 
   return (
     <Html>
@@ -32,14 +32,14 @@ export function AuthenticationMagicLinkTemplate({
         <Body className="bg-white my-auto mx-auto font-sans">
           <Container className="border border-solid border-[#eaeaea] rounded my-[40px] mx-auto p-[20px] w-[465px]">
             <Section className="mt-[32px] text-center">
-              <span className="text-2xl">🍕</span>
+              <span className="text-2xl">🧙‍♂️</span>
             </Section>
             <Heading className="text-black text-[24px] font-normal text-center p-0 my-[30px] mx-0">
-              Faça login na Pizza Shop
+              Faça login no Dashboard Wizard
             </Heading>
-            <Text className="text-black text-[14px] leading-[24px]">
-              Você solicitou um link para login na Pizza Shop através do email{' '}
-              {userEmail}.
+            <Text className="text-black text-[14px] leading-[24px] text-center">
+              Você solicitou um link para login no Dashboard Wizard através do email<br/>
+              {userEmail}
             </Text>
             <Section className="text-center mt-[32px] mb-[32px]">
               <Button
@@ -49,9 +49,9 @@ export function AuthenticationMagicLinkTemplate({
                 Entrar agora
               </Button>
             </Section>
-            <Text className="text-black text-[14px] leading-[24px]">
-              ou copie a URL abaixo e cole em seu browser:{' '}
-              <Link href={authLink} className="text-sky-500 no-underline">
+            <Text className="text-black text-[14px] leading-[24px] text-center">
+              ou copie a URL abaixo e cole em seu browser<br/>
+              <Link href={authLink} className="text-sky-500 no-underline text-center">
                 {authLink}
               </Link>
             </Text>
