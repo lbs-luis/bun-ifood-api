@@ -38,7 +38,9 @@ export function AuthenticationMagicLinkTemplate({
               Faça login no Dashboard Wizard
             </Heading>
             <Text className="text-black text-[14px] leading-[24px] text-center">
-              Você solicitou um link para login no Dashboard Wizard através do email<br/>
+              Você solicitou um link para login no Dashboard Wizard através do
+              email
+              <br />
               {userEmail}
             </Text>
             <Section className="text-center mt-[32px] mb-[32px]">
@@ -50,8 +52,12 @@ export function AuthenticationMagicLinkTemplate({
               </Button>
             </Section>
             <Text className="text-black text-[14px] leading-[24px] text-center">
-              ou copie a URL abaixo e cole em seu browser<br/>
-              <Link href={authLink} className="text-sky-500 no-underline text-center">
+              ou copie a URL abaixo e cole em seu browser
+              <br />
+              <Link
+                href={authLink}
+                className="text-sky-500 no-underline text-center"
+              >
                 {authLink}
               </Link>
             </Text>

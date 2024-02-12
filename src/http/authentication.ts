@@ -35,6 +35,10 @@ export const authentication = new Elysia()
   .use(cookie())
   .derive(({ jwt, cookie, setCookie, removeCookie }) => {
     return {
+      connect: async () => {
+        const payload = await jwt.verify(cookie.auth)
+        return payload
+      },
       getCurrentUser: async () => {
         const payload = await jwt.verify(cookie.auth)
 

@@ -49,7 +49,7 @@ export const getMonthCanceledOrdersAmount = new Elysia()
       const diffFromLastMonth =
         lastMonthOrdersAmount && currentMonthOrdersAmount
           ? (currentMonthOrdersAmount.amount * 100) /
-          lastMonthOrdersAmount.amount
+            lastMonthOrdersAmount.amount
           : null
 
       return {

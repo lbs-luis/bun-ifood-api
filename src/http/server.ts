@@ -27,12 +27,28 @@ import { getDailyReceiptInPeriod } from './routes/get-daily-receipt-in-period'
 import { getPopularProducts } from './routes/get-popular-products'
 import { dispatchOrder } from './routes/dispatch-order'
 import { deliverOrder } from './routes/deliver-order'
-import { getFriendlyFace } from './routes/ friendly-face'
-
+import { home } from './routes/home.ts'
+import { getProducts } from './routes/get-products.ts'
 
 const app = new Elysia()
+  .use(
+    cors({
+      credentials: true,
+      allowedHeaders: ['content-type'],
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'OPTIONS'],
+      origin: (request): boolean => {
+        const origin = request.headers.get('origin')
+
+        if (!origin) {
+          return false
+        }
+
+        return true
+      },
+    }),
+  )
   .use(swagger())
-  .use(getFriendlyFace)
+  .use(home)
   .use(authentication)
   .use(signOut)
   .use(getProfile)
@@ -58,8 +74,9 @@ const app = new Elysia()
   .use(getMonthCanceledOrdersAmount)
   .use(getDailyReceiptInPeriod)
   .use(getPopularProducts)
+  .use(getProducts)
 
-app.listen(3333)
+app.listen(3000)
 
 console.log(
   `🔥 HTTP server running at ${app.server?.hostname}:${app.server?.port}`,

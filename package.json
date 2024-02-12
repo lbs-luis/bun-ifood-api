@@ -1,19 +1,17 @@
 {
   "name": "dashboardwizard",
   "type": "module",
+  "module": "http.ts",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "----BUILD": "",
-    "build:vercel": "bun scripts/transform-paths.ts",
-    "----RUN": "",
     "dev": "bun --watch src/http/server.ts",
-    "start": "bun run build:vercel && bun src/http/server.ts",
-    "----DATABASE": "",
+    "start": "bun run src/http/server.ts",
     "generate": "drizzle-kit generate:pg",
     "migrate": "bun src/db/migrate.ts",
     "seed": "bun src/db/seed.ts",
-    "db:view": "drizzle-kit studio"
+    "db:view": "drizzle-kit studio",
+    "deploy": "fly deploy"
   },
   "author": "Luis Felipe <luis.felipe.lbs@gmail.com>",
   "license": "MIT",
@@ -37,6 +35,7 @@
   },
   "devDependencies": {
     "@faker-js/faker": "8.3.1",
+    "@flydotio/dockerfile": "latest",
     "@rocketseat/eslint-config": "2.1.0",
     "@types/pg": "8.10.9",
     "@types/react": "^18.2.39",
@@ -47,6 +46,9 @@
     "eslint-plugin-drizzle": "^0.2.1",
     "eslint_d": "13.1.1",
     "pg": "^8.11.3",
+    "typescript": "5.3.2"
+  },
+  "peerDependencies": {
     "typescript": "5.3.2"
   }
 }

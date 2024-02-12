@@ -3,41 +3,52 @@ import dayjs from 'dayjs'
 import { authentication } from '../authentication'
 import { db } from '@/db/connection'
 import { authLinks } from '@/db/schema'
-import { eq } from 'drizzle-orm'
+import { and, eq } from 'drizzle-orm'
 import { UnauthorizedError } from './errors/unauthorized-error'
+import { ExpiredLinkError } from './errors/expired-link'
 
 export const authenticateFromLink = new Elysia().use(authentication).get(
   '/auth-links/authenticate',
   async ({ signUser, query, set }) => {
     const { code, redirect } = query
 
-    const authLinkFromCode = await db.query.authLinks.findFirst({
-      where(fields, { eq }) {
-        return eq(fields.code, code)
-      },
-    })
+    const authLinkFromCode = await db
+      .select({
+        code: authLinks.code,
+        createdAt: authLinks.createdAt,
+        userId: authLinks.userId,
+      })
+      .from(authLinks)
+      .where(and(eq(authLinks.code, code)))
 
     if (!authLinkFromCode) {
       throw new UnauthorizedError()
     }
 
-    if (dayjs().diff(authLinkFromCode.createdAt, 'days') > 7) {
+    const authLink = authLinkFromCode.find((authLink) => authLink.code === code)
+
+    if (!authLink) {
       throw new UnauthorizedError()
+    }
+
+    if (dayjs().diff(authLink.createdAt, 'days') > 7) {
+      throw new ExpiredLinkError()
     }
 
     const managedstore = await db.query.stores.findFirst({
       where(fields, { eq }) {
-        return eq(fields.managerId, authLinkFromCode.userId)
+        return eq(fields.managerId, authLink.userId)
       },
     })
 
     await signUser({
-      sub: authLinkFromCode.userId,
+      sub: authLink.userId,
       storeId: managedstore?.id,
     })
 
     await db.delete(authLinks).where(eq(authLinks.code, code))
 
+    await new Promise((resolve) => setTimeout(resolve, 10000))
     set.redirect = redirect
   },
   {

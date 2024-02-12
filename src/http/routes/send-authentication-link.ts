@@ -24,6 +24,11 @@ export const sendAuthenticationLink = new Elysia().post(
 
     const authLinkCode = createId()
 
+    console.log({
+      userId: userFromEmail.id,
+      code: authLinkCode,
+    })
+
     await db.insert(authLinks).values({
       userId: userFromEmail.id,
       code: authLinkCode,
@@ -33,7 +38,8 @@ export const sendAuthenticationLink = new Elysia().post(
     authLink.searchParams.set('code', authLinkCode)
     authLink.searchParams.set('redirect', env.AUTH_REDIRECT_URL)
 
-    console.log(authLink.toString())
+    // LINK IN CONSOLE
+    // console.log(authLink.toString())
 
     await resend.emails.send({
       from: 'Dashboard Wizard <naoresponda@resend.dev>',
