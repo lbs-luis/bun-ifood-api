@@ -3,11 +3,11 @@
   "buildCommand": "bun run build:vercel",
   "rewrites": [
     {
-      "src": "/public/:match*",
+      "source": "/public/:match*",
       "destination": "/:match*"
     },
     {
-      "src": "/(.*)",
+      "source": "/(.*)",
       "destination": "/api"
     }
   ],
