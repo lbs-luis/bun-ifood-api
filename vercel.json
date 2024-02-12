@@ -1,6 +1,16 @@
 {
   "version": 2,
   "buildCommand": "bun run build:vercel",
+  "rewrites": [
+    {
+      "src": "/public/:match*",
+      "destination": "/:match*"
+    },
+    {
+      "src": "/(.*)",
+      "destination": "/api"
+    }
+  ],
   "routes": [
     {
       "src": "/(.*)",
