@@ -39,7 +39,7 @@ export const sendAuthenticationLink = new Elysia().post(
     authLink.searchParams.set('redirect', env.AUTH_REDIRECT_URL)
 
     // LINK IN CONSOLE
-    // console.log(authLink.toString())
+    console.log(authLink.toString())
 
     await resend.emails.send({
       from: 'Dashboard Wizard <naoresponda@resend.dev>',

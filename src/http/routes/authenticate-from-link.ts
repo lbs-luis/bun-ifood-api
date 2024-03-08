@@ -48,7 +48,6 @@ export const authenticateFromLink = new Elysia().use(authentication).get(
 
     await db.delete(authLinks).where(eq(authLinks.code, code))
 
-    await new Promise((resolve) => setTimeout(resolve, 10000))
     set.redirect = redirect
   },
   {
