@@ -4,7 +4,7 @@ import { swagger } from '@elysiajs/swagger'
 
 import { registerStore } from './routes/register-store'
 import { registerCustomer } from './routes/register-customer'
-import { sendAuthenticationLink } from './routes/send-authentication-link'
+import { sendAuthenticationLink } from './routes/send-authentication-method.ts'
 import { createOrder } from './routes/create-order'
 import { approveOrder } from './routes/approve-order'
 import { cancelOrder } from './routes/cancel-order'
